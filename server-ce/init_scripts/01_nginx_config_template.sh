@@ -25,7 +25,10 @@ if [ -f "${nginx_template_file}" ]; then
   # Note the single-quotes, they are important.
   # This is a pass-list of env-vars that envsubst
   # should operate on.
-  envsubst '${NGINX_WORKER_PROCESSES} ${NGINX_WORKER_CONNECTIONS}' \
+  envsubst '
+    ${NGINX_WORKER_CONNECTIONS}
+    ${NGINX_WORKER_PROCESSES}
+  ' \
     < "${nginx_template_file}" \
     > "${nginx_config_file}"
 
